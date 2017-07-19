@@ -1,0 +1,54 @@
+<div class="navbar navbar-inverse navbar-static-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" 
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }">
+                Meetup Manager
+        </a>
+    </div>
+
+    <ul  class="nav navbar-nav pull-right">
+        <li><a routerLink="/events">Events</a></li>
+    </ul>
+
+    <!--If not authenticated-->
+    <ul *ngIf="!auth.loggedIn"  class="nav navbar-nav pull-right">
+        <li (click)="auth.login()"><a >Login</a></li>
+        <!-- <li><a >Sign up</a></li> -->
+    </ul>
+
+    <!--If authenticated-->
+    <ul *ngIf="auth.loggedIn" class="nav navbar-nav pull-right">
+        <!--<li><a ></a></li>-->
+        <li>
+            <a routerLink="/my-rsvps"
+                routerLinkActive="active">
+                    Profile
+            </a>
+        </li>
+        <li (click)="auth.logout()"><a >Logout</a></li>
+    </ul>
+
+    <ul *ngIf="auth.loggedIn && auth.isAdmin" class="nav navbar-nav pull-right">
+        <li>
+            <a routerLink="/admin"
+                routerLinkActive="active">
+                    Admin
+            </a>
+        </li>
+        <!-- <li>
+            <a routerLink="/admin"
+                routerLinkActive="active">
+                    Create Event
+            </a>
+        </li> -->
+        <li>
+            <a routerLink="/my-rsvps"
+                routerLinkActive="active">
+                    Profile
+            </a>
+        </li>
+        <li (click)="auth.logout()"><a >Logout</a></li>
+    </ul>
+</div>
