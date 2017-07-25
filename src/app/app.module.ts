@@ -8,11 +8,20 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
+import { AuthService } from './auth/auth.service';
+import { CallbackComponent } from './pages/callback/callback.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { EventsComponent } from './pages/events/events.component';
+
+
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        CallbackComponent,
+        NavigationComponent,
+        EventsComponent
     ],
     imports: [
         BrowserModule,
@@ -20,7 +29,9 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
         HttpModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+        AuthService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
