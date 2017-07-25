@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const cors = require('cors')
+const path = require('path');
 const bodyParser = require('body-parser');
 
 const config = require('./server/config/main');
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(cors());
 
-if (config.NODE_ENV !== 'dev') {
+ if (config.NODE_ENV !== 'dev') {
     // Set static path to Angular app in dist
     app.use('/', express.static(path.join(__dirname, './dist')));
 
@@ -25,7 +26,7 @@ if (config.NODE_ENV !== 'dev') {
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '/dist/index.html'));
     });
-}
+} 
 
 app.listen(PORT, () => {
 	console.log(`Server running on localhost:${PORT}`);
