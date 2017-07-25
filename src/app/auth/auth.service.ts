@@ -45,16 +45,16 @@ export class AuthService {
         }
     }
 
-    setLoggedIn(value: boolean){
+    setLoggedIn(value: boolean) {
         this.loggedIn$.next(value);
         this.loggedIn = value;
     }
 
-    login(){
+    login() {
         this.auth0.authorize();
     }
     
-    handleAuth(){
+    handleAuth() {
         this.auth0.parseHash((err, user) => {
             if (user && user.accessToken && user.idToken) {
                 window.location.hash = '';
@@ -72,18 +72,18 @@ export class AuthService {
         return Date.now() < expiresAt;
     }
     
-    private getProfile(user){
+    private getProfile(user) {
         this.auth0.client.userInfo(user.accessToken, (err, profile) => {
             if (profile) {
                 this.setSession(user, profile);
             }
             else if (err) {
-                console.error(`Error autenticating: ${err.error}`);
+                console.error(`Error authenticating: ${err.error}`);
             }
         });
     }
     
-    private setSession(user, profile){
+    private setSession(user, profile) {
         const expiresAt = JSON.stringify((user.expiresIn * 1000) + Date.now());
 
         localStorage.setItem('access_token', user.accessToken);
@@ -95,7 +95,7 @@ export class AuthService {
         this.setLoggedIn(true);                
     }
 
-    logout(){
+    logout() {
         localStorage.removeItem('access_token');
         localStorage.removeItem('id_token');
         localStorage.removeItem('profile');
