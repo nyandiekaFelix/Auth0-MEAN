@@ -16,5 +16,17 @@ module.exports = {
             issuer: config.AUTH0_DOMAIN,
             algorithm: 'RS256'
         });
+    },
+
+    adminCheck: (req, res, next) => {
+        const roles = req.user[config.NAMESPACE] || [];
+
+        if (roles.indexOf('admin') > -1) {
+            next();
+        }
+
+        res.status(401).json({
+            message: 'Resource only available for admin users'
+        });
     }
 };
