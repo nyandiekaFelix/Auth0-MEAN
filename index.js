@@ -9,6 +9,16 @@ const config = require('./server/config/main');
 
 const PORT = config.PORT || 5555;
 mongoose.connect(config.MONGO_URI);
+const db = mongoose.connection;
+
+db.on('open', () => {
+    console.log('Connected to the database.');
+});
+
+db.on('error', (err) => {
+    console.log(`Database error: ${err}`);
+});
+
 
 const app = express();
 app.use(logger('dev'));
