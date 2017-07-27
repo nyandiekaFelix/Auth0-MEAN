@@ -1,0 +1,1 @@
+const meetup = require('../models/meetup.model');

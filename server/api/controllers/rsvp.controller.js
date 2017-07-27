@@ -1,0 +1,1 @@
+const rsvp = require('../models/rsvp.model');

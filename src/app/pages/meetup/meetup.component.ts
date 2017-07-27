@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-    selector: 'app-events',
-    templateUrl: './events.component.html',
-    styleUrls: ['./events.component.css']
+    selector: 'app-meetup',
+    templateUrl: './meetup.component.html',
+    styleUrls: ['./meetup.component.css']
 })
-export class EventsComponent implements OnInit {
-    pageTitle = 'Events';
+export class MeetupComponent implements OnInit {
+    pageTitle = 'Meetup';
 
     constructor(private title: Title) { }
 
