@@ -19,7 +19,10 @@ const meetupSchema = new schema({
         type: Date,
         required: true
     },
-    description: String
+    description: {
+        type: String,
+        required: true
+    } 
 });
 
 module.exports = mongoose.model('Meetup', meetupSchema);
