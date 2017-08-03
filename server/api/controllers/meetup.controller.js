@@ -12,7 +12,7 @@ module.exports = {
                     meetup: meetup
                 });
             })
-            .catch(err => res.status(500).json({ error: err.message });
+            .catch(err => res.status(500).json({ error: err.message }));
     },
 
     allFuture: (req, res) => {
@@ -24,7 +24,7 @@ module.exports = {
             .then(meetups => {
                 return res.status(200).json(meetups);
             })
-            .catch(err => res.status(500).json({ error: err.message });
+            .catch(err => res.status(500).json({ error: err.message }));
 
     },
 
@@ -42,7 +42,7 @@ module.exports = {
                 }
                 return res.status(200).json({ meetup: meetup });
             })
-            .catch(err => res.status(500).json({ error: err.message });
+            .catch(err => res.status(500).json({ error: err.message }));
     },
 
     updateOne: (req, res) => {
@@ -80,7 +80,7 @@ module.exports = {
                     meetup: updatedDoc
                 });
             })
-            .catch(err => res.status(500).json({ error: err.message });
+            .catch(err => res.status(500).json({ error: err.message }));
     },
 
     deleteOne: (req, res) => {
@@ -91,7 +91,7 @@ module.exports = {
                     message: 'Event deleted'
                 });
             })
-            .catch(err => res.status(500).json({ error: err.message });
+            .catch(err => res.status(500).json({ error: err.message }));
     }
     
 }
