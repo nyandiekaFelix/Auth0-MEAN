@@ -2,7 +2,7 @@ const Meetup = require('../models/meetup.model');
 
 module.exports = {
 
-    newMeetup: (req, res) => {
+    newMeetup: function(req, res) {
 
         return new Meetup(req.body)
             .save()
@@ -15,7 +15,7 @@ module.exports = {
             .catch(err => res.status(500).json({ error: err.message }));
     },
 
-    allFuture: (req, res) => {
+    allFuture: function(req, res) {
 
         const _projections = 'title location startDate endDate';
 
@@ -28,7 +28,7 @@ module.exports = {
 
     },
 
-    getOne: (req, res) => {
+    getOne: function(req, res){
 
         const _projections = 'title location startDate endDate description';
 
@@ -45,7 +45,7 @@ module.exports = {
             .catch(err => res.status(500).json({ error: err.message }));
     },
 
-    updateOne: (req, res) => {
+    updateOne: function(req, res){
 
         Meetup.findById(req.params.meetupId)
             .exec()
@@ -83,7 +83,7 @@ module.exports = {
             .catch(err => res.status(500).json({ error: err.message }));
     },
 
-    deleteOne: (req, res) => {
+    deleteOne: function(req, res){
         Meetup.findOneAndRemove(req.params.meetupId)
             .exec()
             .then(() => {
